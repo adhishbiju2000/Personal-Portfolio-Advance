@@ -1,1052 +1,591 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adhish Biju - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adhish Biju — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            height: 100%;
-        }
-        
-        body { 
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        .main-content {
-            flex: 1;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .glow-button {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .glow-button:hover {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .animate-fadeInUp {
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .animate-bounce-in {
-            animation: bounceIn 1.5s ease-out;
-        }
-        
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        .navbar-blur {
-            backdrop-filter: blur(20px);
-            background-color: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
-        }
-        
-        /* Fix for mobile menu */
-        .mobile-menu-hidden {
-            display: none;
-        }
-        
-        .mobile-menu-visible {
-            display: block;
-        }
+  :root {
+    --navy:   #1a2b4a;
+    --blue:   #2563eb;
+    --blue-soft: #eff6ff;
+    --line:   #e5e7eb;
+    --bg:     #ffffff;
+    --bg2:    #f9fafb;
+    --text:   #111827;
+    --muted:  #6b7280;
+    --light:  #9ca3af;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; color:var(--text); background:var(--bg); font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; }
 
-        /* Footer specific fixes */
-        footer {
-            margin-top: auto;
-            flex-shrink: 0;
-        
-    }
+  /* ── NAV ── */
+  nav { position:fixed; top:0; left:0; right:0; z-index:50; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(6px); }
+  .nav-wrap { max-width:1080px; margin:0 auto; padding:0 28px; height:60px; display:flex; align-items:center; justify-content:space-between; }
+  .nav-brand { font-family:'Lora',serif; font-size:1.1rem; font-weight:600; color:var(--navy); text-decoration:none; letter-spacing:-0.01em; }
+  .nav-links { display:flex; gap:28px; list-style:none; align-items:center; }
+  .nav-links a { font-size:0.78rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+  .nav-links a:hover { color:var(--navy); }
+  .nav-btn { background:var(--navy); color:#fff !important; padding:8px 18px; border-radius:6px; }
+  .nav-btn:hover { background:#243a5e !important; }
+  .ham { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; }
+  .ham span { display:block; width:20px; height:1.5px; background:var(--navy); }
+  .mob-nav { display:none; position:fixed; inset:60px 0 0 0; background:var(--bg); z-index:49; padding:24px 28px; flex-direction:column; border-top:1px solid var(--line); }
+  .mob-nav.open { display:flex; }
+  .mob-nav a { padding:14px 0; font-size:0.95rem; font-weight:500; color:var(--navy); text-decoration:none; border-bottom:1px solid var(--line); }
 
-    .gradient-text {
-            background: linear-gradient(135deg, #059669, #2563eb, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .glow-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px 0 rgba(31, 38, 135, 0.37);
-        }
-        
-        .glow-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(31, 38, 135, 0.5);
-        }
-        
-        .glow-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .glow-button:hover::before {
-            left: 100%;
-        }
-        
-        .feature-item {
-            transition: all 0.3s ease;
-            padding: 8px;
-            border-radius: 8px;
-        }
-        
-        .feature-item:hover {
-            background-color: rgba(59, 130, 246, 0.1);
-            transform: translateX(4px);
-        }
-        
-        .tech-badge {
-            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-            border: 1px solid #d1d5db;
-            transition: all 0.3s ease;
-        }
-        
-        .tech-badge:hover {
-            background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
-            border-color: #8b5cf6;
-            transform: translateY(-1px);
-        }
-        
-        .project-image {
-            transition: all 0.4s ease;
-            filter: brightness(1.1) contrast(1.05);
-        }
-        
-        .project-image:hover {
-            transform: scale(1.02);
-            filter: brightness(1.2) contrast(1.1);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .floating-element {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .status-badge {
-            background: linear-gradient(135deg, #10b981, #059669);
-            animation: pulse 2s infinite;
-        }
+  /* ── HERO ── */
+  #hero { padding-top:60px; min-height:100vh; display:flex; align-items:center; }
+  .hero-wrap { max-width:1080px; margin:0 auto; padding:80px 28px; display:grid; grid-template-columns:1fr 320px; gap:80px; align-items:center; }
+  .hero-tag { font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:18px; display:flex; align-items:center; gap:8px; }
+  .hero-tag::before { content:''; width:28px; height:1px; background:var(--blue); }
+  h1 { font-family:'Lora',serif; font-size:clamp(2.6rem,5.5vw,3.8rem); font-weight:700; color:var(--navy); line-height:1.1; letter-spacing:-0.02em; margin-bottom:20px; }
+  .hero-rule { width:44px; height:2px; background:var(--blue); margin-bottom:22px; }
+  .hero-desc { font-size:0.97rem; color:var(--muted); max-width:460px; line-height:1.8; margin-bottom:32px; }
+  .btns { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+  .btn { display:inline-flex; align-items:center; gap:7px; font-size:0.83rem; font-weight:600; padding:11px 22px; border-radius:6px; text-decoration:none; border:none; cursor:pointer; transition:all .2s; font-family:'Inter',sans-serif; }
+  .btn-dark { background:var(--navy); color:#fff; }
+  .btn-dark:hover { background:#243a5e; }
+  .btn-out { background:transparent; color:var(--navy); border:1.5px solid var(--line); }
+  .btn-out:hover { border-color:var(--navy); background:var(--bg2); }
+  .socials { display:flex; gap:8px; }
+  .soc { width:36px; height:36px; border-radius:6px; border:1.5px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--muted); text-decoration:none; font-size:0.85rem; transition:all .2s; }
+  .soc:hover { border-color:var(--navy); color:var(--navy); }
+  .hero-card { background:var(--bg2); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .hero-photo { width:100%; aspect-ratio:1; object-fit:cover; display:block; }
+  .hero-photo-ph { width:100%; aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-family:'Lora',serif; font-size:4rem; font-weight:700; color:var(--navy); background:var(--bg2); }
+  .hero-stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
+  .hs { padding:14px 8px; text-align:center; border-right:1px solid var(--line); }
+  .hs:last-child { border-right:none; }
+  .hs-num { font-family:'Lora',serif; font-size:1.4rem; font-weight:700; color:var(--navy); line-height:1; margin-bottom:2px; }
+  .hs-lbl { font-size:0.62rem; font-weight:600; letter-spacing:0.05em; color:var(--light); text-transform:uppercase; }
+
+  /* ── GENERIC SECTION ── */
+  .sec { padding:88px 28px; }
+  .sec-alt { background:var(--bg2); }
+  .sec-dark { background:var(--navy); }
+  .wrap { max-width:1080px; margin:0 auto; }
+  .sec-hd { margin-bottom:48px; }
+  .eyebrow { font-size:0.7rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .eyebrow::before { content:''; width:22px; height:1px; background:var(--blue); }
+  .d-eyebrow { color:#93c5fd; } .d-eyebrow::before { background:#93c5fd; }
+  .sec-title { font-family:'Lora',serif; font-size:clamp(1.7rem,3.5vw,2.3rem); font-weight:700; color:var(--navy); letter-spacing:-0.02em; line-height:1.15; }
+  .d-title { color:#fff; }
+  .sec-sub { font-size:0.92rem; color:var(--muted); margin-top:10px; max-width:500px; line-height:1.7; }
+  .d-sub { color:rgba(255,255,255,0.5); }
+
+  /* ── ABOUT ── */
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+  .about-text { font-size:0.94rem; color:var(--muted); line-height:1.85; }
+  .about-text p+p { margin-top:14px; }
+  .about-text strong { color:var(--navy); font-weight:600; }
+  .sk-item { padding:14px 0; border-bottom:1px solid var(--line); }
+  .sk-item:first-child { border-top:1px solid var(--line); }
+  .sk-row { display:flex; justify-content:space-between; margin-bottom:8px; }
+  .sk-name { font-size:0.85rem; font-weight:600; color:var(--navy); }
+  .sk-pct { font-size:0.75rem; font-weight:700; color:var(--blue); }
+  .sk-track { height:2px; background:var(--line); border-radius:99px; overflow:hidden; }
+  .sk-bar { height:100%; background:var(--navy); border-radius:99px; transform-origin:left; transform:scaleX(0); transition:transform 1s cubic-bezier(.4,0,.2,1); }
+  .sk-bar.on { transform:scaleX(1); }
+
+  /* ── SKILLS CARDS ── */
+  .sk-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .sk-card { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:26px 22px; transition:box-shadow .2s,border-color .2s; }
+  .sk-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.07); border-color:#d1d5db; }
+  .sk-icon { width:38px; height:38px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; margin-bottom:14px; }
+  .sk-card h3 { font-size:0.88rem; font-weight:700; color:var(--navy); margin-bottom:7px; }
+  .sk-card p { font-size:0.8rem; color:var(--muted); line-height:1.65; }
+
+  /* ── EXPERIENCE ── */
+  .exp-box { display:grid; grid-template-columns:200px 1fr; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--bg); }
+  .exp-tabs { background:var(--bg2); border-right:1px solid var(--line); }
+  .exp-tab { padding:18px 20px; border-bottom:1px solid var(--line); cursor:pointer; border-left:2px solid transparent; transition:background .15s; }
+  .exp-tab:last-child { border-bottom:none; }
+  .exp-tab:hover { background:#f3f4f6; }
+  .exp-tab.active { background:var(--bg); border-left-color:var(--blue); }
+  .et-role { font-size:0.82rem; font-weight:700; color:var(--navy); margin-bottom:2px; }
+  .et-co { font-size:0.74rem; color:var(--muted); }
+  .et-yr { font-size:0.66rem; color:var(--light); margin-top:3px; font-weight:600; letter-spacing:.04em; }
+  .exp-panel { padding:36px 40px; }
+  .exp-pane { display:none; }
+  .exp-pane.active { display:block; }
+  .exp-pane h3 { font-family:'Lora',serif; font-size:1.35rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+  .exp-badge { display:inline-block; background:var(--blue-soft); color:var(--blue); font-size:0.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:16px; }
+  .exp-pane p { font-size:0.88rem; color:var(--muted); line-height:1.8; margin-bottom:18px; }
+  .tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:20px; }
+  .tag { font-size:0.74rem; font-weight:600; color:var(--navy); background:var(--bg2); border:1px solid var(--line); padding:4px 11px; border-radius:4px; }
+  .cert-lnk { display:inline-flex; align-items:center; gap:5px; font-size:0.8rem; font-weight:600; color:var(--blue); text-decoration:none; }
+  .cert-lnk:hover { text-decoration:underline; }
+  .cert-lnk i { font-size:0.65rem; }
+
+  /* ── PROJECTS ── */
+  .major-card { background:var(--navy); border-radius:12px; overflow:hidden; display:grid; grid-template-columns:1.1fr 1fr; margin-bottom:18px; }
+  .mc-img { position:relative; min-height:340px; overflow:hidden; }
+  .mc-img img { width:100%; height:100%; object-fit:cover; opacity:.8; }
+  .mc-img-ph { width:100%; height:100%; min-height:340px; background:#162038; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.1); font-size:4rem; }
+  .mc-flag { position:absolute; top:18px; left:18px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); color:#fff; font-size:0.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:4px; }
+  .mc-live { position:absolute; top:18px; right:18px; display:flex; align-items:center; gap:5px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); color:#86efac; font-size:0.66rem; font-weight:700; letter-spacing:.06em; padding:4px 10px; border-radius:4px; }
+  .mc-live::before { content:''; width:5px; height:5px; border-radius:50%; background:#86efac; }
+  .mc-body { padding:44px 36px; display:flex; flex-direction:column; justify-content:center; }
+  .mc-body h3 { font-family:'Lora',serif; font-size:1.3rem; font-weight:700; color:#fff; line-height:1.25; margin-bottom:14px; }
+  .mc-body p { font-size:0.84rem; color:rgba(255,255,255,.5); line-height:1.78; margin-bottom:22px; }
+  .tech-pills { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px; }
+  .tp { font-size:0.7rem; font-weight:600; color:rgba(255,255,255,.55); background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); padding:3px 10px; border-radius:4px; }
+  .mc-stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(255,255,255,.1); padding-top:22px; }
+  .ms-num { font-family:'Lora',serif; font-size:1.4rem; font-weight:700; color:#fff; line-height:1; margin-bottom:3px; }
+  .ms-lbl { font-size:0.64rem; color:rgba(255,255,255,.35); font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+  .mc-link { display:inline-flex; align-items:center; gap:5px; font-size:0.8rem; font-weight:600; color:rgba(255,255,255,.6); margin-bottom:22px; text-decoration:none; }
+  .mc-link:hover { color:#fff; }
+
+  .sub-lbl { font-size:0.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--light); padding:36px 0 18px; border-top:1px solid var(--line); margin-top:16px; }
+
+  .proj-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .proj-grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+  .pc { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:22px 18px; display:flex; flex-direction:column; transition:box-shadow .2s,border-color .2s; }
+  .pc:hover { box-shadow:0 4px 14px rgba(0,0,0,.07); border-color:#d1d5db; }
+  .pc-icon { width:36px; height:36px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:0.95rem; margin-bottom:12px; flex-shrink:0; }
+  .pc h4 { font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:7px; line-height:1.3; }
+  .pc p { font-size:0.77rem; color:var(--muted); line-height:1.6; flex-grow:1; margin-bottom:12px; }
+  .pc-tag { font-size:0.66rem; font-weight:700; letter-spacing:.04em; color:var(--light); text-transform:uppercase; margin-bottom:12px; }
+  .pc-lnk { display:inline-flex; align-items:center; gap:4px; font-size:0.76rem; font-weight:600; color:var(--blue); text-decoration:none; margin-top:auto; }
+  .pc-lnk:hover { text-decoration:underline; }
+  .pc-lnk i { font-size:0.6rem; }
+  .pc.sm { padding:16px 14px; }
+  .pc.sm h4 { font-size:0.8rem; }
+  .pc.sm p { font-size:0.73rem; }
+  .pc.sm .pc-icon { width:30px; height:30px; font-size:0.8rem; margin-bottom:10px; }
+
+  /* ── CERTS ── */
+  .cert-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .cert-card { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:22px 20px; display:flex; gap:14px; align-items:flex-start; transition:box-shadow .2s; }
+  .cert-card:hover { box-shadow:0 4px 14px rgba(0,0,0,.06); }
+  .cert-icon { width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .cert-info h4 { font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:3px; line-height:1.3; }
+  .cert-info p { font-size:0.75rem; color:var(--muted); margin-bottom:10px; }
+  .cert-info a { display:inline-flex; align-items:center; gap:4px; font-size:0.74rem; font-weight:600; color:var(--blue); text-decoration:none; }
+  .cert-info a:hover { text-decoration:underline; }
+  .cert-info a i { font-size:0.6rem; }
+
+  /* ── EDUCATION ── */
+  .edu-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .edu-card { border-radius:12px; padding:34px 28px; border:1px solid var(--line); }
+  .edu-card.dk { background:var(--navy); border-color:transparent; }
+  .edu-card.lt { background:var(--bg); }
+  .edu-card.md { background:var(--bg2); }
+  .edu-lbl { font-size:0.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:18px; }
+  .dk .edu-lbl { color:#93c5fd; } .lt .edu-lbl, .md .edu-lbl { color:var(--light); }
+  .edu-ic { width:38px; height:38px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:0.95rem; margin-bottom:14px; }
+  .dk .edu-ic { background:rgba(255,255,255,.08); color:#93c5fd; }
+  .lt .edu-ic { background:var(--blue-soft); color:var(--blue); }
+  .md .edu-ic { background:var(--line); color:var(--muted); }
+  .edu-card h3 { font-family:'Lora',serif; font-size:1.05rem; font-weight:700; margin-bottom:5px; line-height:1.25; }
+  .dk h3 { color:#fff; } .lt h3, .md h3 { color:var(--navy); }
+  .edu-inst { font-size:0.8rem; margin-bottom:20px; }
+  .dk .edu-inst { color:rgba(255,255,255,.4); } .lt .edu-inst, .md .edu-inst { color:var(--muted); }
+  .edu-score-wrap { border-top:1px solid; padding-top:18px; }
+  .dk .edu-score-wrap { border-color:rgba(255,255,255,.1); }
+  .lt .edu-score-wrap, .md .edu-score-wrap { border-color:var(--line); }
+  .edu-score { font-family:'Lora',serif; font-size:1.9rem; font-weight:700; line-height:1; margin-bottom:2px; }
+  .dk .edu-score { color:#fff; } .lt .edu-score, .md .edu-score { color:var(--navy); }
+  .edu-score-lbl { font-size:0.64rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+  .dk .edu-score-lbl { color:rgba(255,255,255,.35); } .lt .edu-score-lbl, .md .edu-score-lbl { color:var(--light); }
+
+  /* ── CONTACT ── */
+  .contact-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:72px; align-items:start; }
+  .contact-intro { font-size:0.92rem; color:rgba(255,255,255,.5); line-height:1.8; margin-top:18px; margin-bottom:36px; }
+  .c-links { display:flex; flex-direction:column; }
+  .c-link { display:flex; align-items:center; gap:13px; padding:15px 0; border-bottom:1px solid rgba(255,255,255,.07); color:rgba(255,255,255,.55); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color .2s; }
+  .c-link:hover { color:#fff; }
+  .c-icon { width:34px; height:34px; border-radius:7px; background:rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center; font-size:0.82rem; flex-shrink:0; }
+  .c-form { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:36px 32px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .fg { margin-bottom:16px; }
+  .fl { display:block; font-size:0.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:7px; }
+  .fi, .ft { width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:6px; padding:11px 14px; color:#fff; font-family:'Inter',sans-serif; font-size:0.87rem; outline:none; transition:border-color .2s; }
+  .fi::placeholder, .ft::placeholder { color:rgba(255,255,255,.2); }
+  .fi:focus, .ft:focus { border-color:rgba(255,255,255,.28); }
+  .ft { resize:vertical; min-height:108px; }
+  .f-submit { width:100%; display:flex; align-items:center; justify-content:center; gap:7px; background:#fff; color:var(--navy); font-family:'Inter',sans-serif; font-size:0.84rem; font-weight:700; padding:13px; border-radius:6px; border:none; cursor:pointer; transition:background .2s; }
+  .f-submit:hover { background:#f3f4f6; }
+
+  /* ── FOOTER ── */
+  footer { background:#101d33; border-top:1px solid rgba(255,255,255,.05); padding:24px 28px; }
+  .foot-inner { max-width:1080px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+  .foot-brand { font-family:'Lora',serif; font-size:0.9rem; font-weight:600; color:rgba(255,255,255,.35); }
+  .foot-copy { font-size:0.74rem; color:rgba(255,255,255,.22); }
+  .foot-links { display:flex; gap:18px; }
+  .foot-links a { font-size:0.74rem; font-weight:500; color:rgba(255,255,255,.28); text-decoration:none; transition:color .2s; }
+  .foot-links a:hover { color:rgba(255,255,255,.6); }
+
+  /* ── REVEAL ── */
+  .rv { opacity:0; transform:translateY(16px); transition:opacity .6s ease,transform .6s ease; }
+  .rv.on { opacity:1; transform:translateY(0); }
+  .d1 { transition-delay:.08s; } .d2 { transition-delay:.16s; } .d3 { transition-delay:.24s; } .d4 { transition-delay:.32s; } .d5 { transition-delay:.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1024px){
+    .hero-wrap{grid-template-columns:1fr;gap:48px}
+    .hero-card{display:grid;grid-template-columns:auto 1fr;max-width:480px}
+    .hero-photo,.hero-photo-ph{width:160px;height:160px;aspect-ratio:unset}
+    .hero-stats{border-top:none;border-left:1px solid var(--line)}
+    .about-grid{grid-template-columns:1fr;gap:44px}
+    .sk-grid{grid-template-columns:repeat(2,1fr)}
+    .exp-box{grid-template-columns:1fr}
+    .exp-tabs{display:flex;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line)}
+    .exp-tab{border-bottom:none;border-left:none;border-top:2px solid transparent;flex-shrink:0}
+    .exp-tab.active{border-top-color:var(--blue);border-left:none}
+    .major-card{grid-template-columns:1fr}
+    .mc-img{min-height:220px}
+    .proj-grid{grid-template-columns:repeat(2,1fr)}
+    .proj-grid-5{grid-template-columns:repeat(3,1fr)}
+    .cert-grid{grid-template-columns:repeat(2,1fr)}
+    .edu-row{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr;gap:44px}
+    .nav-links{display:none}
+    .ham{display:flex}
+  }
+  @media(max-width:640px){
+    .sec{padding:64px 18px}
+    .hero-wrap{padding:60px 18px}
+    .hero-card{grid-template-columns:1fr}
+    .hero-photo,.hero-photo-ph{width:100%;height:200px}
+    .sk-grid,.proj-grid,.proj-grid-5,.cert-grid{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .foot-inner{flex-direction:column;gap:10px;text-align:center}
+    .nav-wrap{padding:0 18px}
+  }
 </style>
 </head>
-  <!-- Main Content Wrapper -->
-    <main class="main-content">
-<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 navbar-blur border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="gradient-text text-xl font-bold">Adhish Biju</div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="hover:text-blue-600 transition-colors text-gray-700">Home</a>
-                        <a href="#education" class="hover:text-blue-600 transition-colors text-gray-700">Education</a>
-                        <a href="#internships" class="hover:text-blue-600 transition-colors text-gray-700">Internships</a>
-                        <a href="#certificates" class="hover:text-blue-600 transition-colors text-gray-700">Certificates</a>
-                        <a href="#projects" class="hover:text-blue-600 transition-colors text-gray-700">Projects</a>
-                        <a href="#contact" class="hover:text-blue-600 transition-colors text-gray-700">Contact</a>
-                    </div>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white bg-opacity-95">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 hover:text-blue-600 transition-colors text-gray-700">Home</a>
-                <a href="#education" class="block px-3 py-2 hover:text-blue-600 transition-colors text-gray-700">Education</a>
-                <a href="#internships" class="block px-3 py-2 hover:text-blue-600 transition-colors text-gray-700">Internships</a>
-                <a href="#certificates" class="block px-3 py-2 hover:text-blue-600 transition-colors text-gray-700">Certificates</a>
-                <a href="#projects" class="block px-3 py-2 hover:text-blue-600 transition-colors text-gray-700">Projects</a>
-                <a href="#contact" class="block px-3 py-2 hover:text-blue-600 transition-colors text-gray-700">Contact</a>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Home Section -->
-    <section id="home" class="min-h-screen flex items-center pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <!-- Personal Photo -->
-                <div class="flex justify-center lg:justify-start">
-                    <div class="relative animate-bounce-in">
-                        <div class="w-96 h-96">
-                            <img src="./Super Adhish Photo.jpg" alt="Adhish Biju" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        
-                    </div>
-                </div>
-                
-                <!-- Name and Introduction -->
-                <div class="text-center lg:text-left animate-fadeInUp">
-                    <h1 class="text-6xl lg:text-8xl font-bold gradient-text mb-8 animate-bounce-in">
-                        Adhish Biju
-                    </h1>
-                 <p class="text-lg text-justify">
-                        A passionate and dedicated professional with a strong foundation in Data Science, Data Analytics, Software Development, and Cloud Computing. 
-                    My goal is to leverage my skills to build innovative solutions by extracting insights from complex datasets and applying analytical techniques to drive data-driven decisions.
-                    </p><br>
-                    <!-- Social Media Icons -->
-                    <div class="flex justify-center lg:justify-start space-x-8 mb-10">
-                        <a href="https://www.linkedin.com/in/adhishbiju/" class="text-4xl text-blue-500 hover:text-blue-400 transition-colors hover:scale-110 transform">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/adhishbiju2000" class="text-4xl text-gray-700 hover:text-gray-600 transition-colors hover:scale-110 transform">
-                            <i class="fab fa-github"></i>
-                        </a>
-                       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adhishbiju2000@gmail.com" 
-                            target="_blank" 
-                            class="text-3xl text-red-500 hover:text-red-400 transition-colors hover:scale-110 transform">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                    </div>
-                    
-                    <!-- Download Resume Button -->
-                   <a href="./Adhish Biju Resume.pdf" download>
-                    <button class="glow-button bg-gradient-to-r from-blue-500 to-purple-600 px-10 py-4 rounded-full text-white font-semibold text-lg hover:from-blue-600 hover:to-purple-700">
-                        <i class="fas fa-download mr-3"></i>Download Resume
-                    </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav>
+  <div class="nav-wrap">
+    <a href="#hero" class="nav-brand">Adhish Biju</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact" class="nav-btn">Contact</a></li>
+    </ul>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mob">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</div>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center gradient-text mb-20">About Me</h2>
-            <div class="bg-gray-50 rounded-3xl p-12 lg:p-16 card-hover border border-gray-200 shadow-lg">
-                <p class="text-gray-700 text-xl leading-relaxed text-center max-w-5xl mx-auto">
-                   I’m an aspiring Data Scientist and Data Analyst with a strong foundation in Software Development and Cloud Computing. I enjoy exploring data, uncovering insights through analytics, and building innovative solutions that solve real-world problems. My journey is driven by curiosity, continuous learning, and a passion for transforming complex datasets into impactful business outcomes.
-                </p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center gradient-text mb-20">Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-blue-500 text-5xl mb-6"><i class="fas fa-code"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Programming Languages</h3>
-                    <p class="text-gray-600 text-lg">Python, Java, C, R, SQL</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-green-500 text-5xl mb-6"><i class="fas fa-chart-line"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Data Science Libraries</h3>
-                    <p class="text-gray-600 text-lg">Pandas, NumPy, Matplotlib, Seaborn</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-purple-500 text-5xl mb-6"><i class="fas fa-layer-group"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Frameworks & ML</h3>
-                    <p class="text-gray-600 text-lg">Flask, TensorFlow, OpenCV</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-yellow-500 text-5xl mb-6"><i class="fas fa-chart-bar"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">BI & Analytics Tools</h3>
-                    <p class="text-gray-600 text-lg">Power BI, Excel (Pivot, Power Query), Jupyter</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-red-500 text-5xl mb-6"><i class="fas fa-database"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Databases</h3>
-                    <p class="text-gray-600 text-lg">MySQL, PostgreSQL, SQLite</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-indigo-500 text-5xl mb-6"><i class="fas fa-brain"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Data Science Concepts</h3>
-                    <p class="text-gray-600 text-lg">Data Cleaning, EDA, Machine Learning, AI Automation</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-teal-500 text-5xl mb-6"><i class="fas fa-tools"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Development Tools</h3>
-                    <p class="text-gray-600 text-lg">Git, GitHub, VS Code</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-orange-500 text-5xl mb-6"><i class="fas fa-globe"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Web Technologies</h3>
-                    <p class="text-gray-600 text-lg">HTML, CSS, JavaScript</p>
-                </div>
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-pink-500 text-5xl mb-6"><i class="fas fa-eye"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Data Visualization</h3>
-                    <p class="text-gray-600 text-lg">Interactive Dashboards, Storytelling with Data, Advanced Charts</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center gradient-text mb-20">Education</h2>
-            <div class="space-y-10">
-                <div class="bg-gray-50 rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mr-8">
-                            <i class="fas fa-graduation-cap text-3xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl font-semibold text-blue-600 mb-2">B-Tech in Information Technology</h3>
-                            <p class="text-gray-600 text-lg">Pillai College of Engineering • 2022–2026</p>
-                            <p class="text-gray-700 font-medium text-xl">CGPA: 7.2</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mr-8">
-                            <i class="fas fa-school text-3xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl font-semibold text-green-600 mb-2">Higher Secondary (Science)</h3>
-                            <p class="text-gray-600 text-lg">MADP Junior College</p>
-                            <p class="text-gray-700 font-medium text-xl">Percentage: 73.4%</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-20 h-20 bg-purple-500 rounded-full flex items-center justify-center mr-8">
-                            <i class="fas fa-book text-3xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl font-semibold text-purple-600 mb-2">Secondary School</h3>
-                            <p class="text-gray-600 text-lg">DAV International School</p>
-                            <p class="text-gray-700 font-medium text-xl">Percentage: 68.6%</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Internships Section -->
-    <section id="internships" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center gradient-text mb-20">Internships</h2>
-            <div class="flex justify-center">
-                <div class="bg-white rounded-2xl p-10 card-hover shadow-lg border border-gray-200 max-w-md">
-                    <div class="text-blue-500 text-6xl mb-6 text-center"><i class="fas fa-cloud"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 text-center">Cloud Counselage</h3>
-                    <p class="text-gray-600 mb-6 text-lg text-center">Data Analyst Intern</p>
-                    <div class="text-center">
-                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7311726160822906880/" target="_blank" rel="noopener noreferrer" class="glow-button bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-white font-medium inline-block">
-                            View Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Job Simulation Programs Section -->
-    <section id="job-simulations" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center gradient-text mb-20">Job Simulation Programs</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                <div class="bg-gray-50 rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-indigo-500 text-6xl mb-6 text-center"><i class="fas fa-briefcase"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 text-center">TATA Group</h3>
-                    <p class="text-gray-600 mb-6 text-lg text-center">Job Simulation Program</p>
-                    <div class="text-center">
-                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Tata/MyXvBcppsW2FkNYCX_Tata%20Group_LsJv6Zg8aaPYZmdhp_1725082256214_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="glow-button bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg text-white font-medium inline-block">
-                            View Certificate
-                        </a>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-2xl p-10 card-hover shadow-lg border border-gray-200">
-                    <div class="text-purple-500 text-6xl mb-6 text-center"><i class="fas fa-laptop-code"></i></div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 text-center">Accenture</h3>
-                    <p class="text-gray-600 mb-6 text-lg text-center">Job Simulation Program</p>
-                    <div class="text-center">
-                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_LsJv6Zg8aaPYZmdhp_1722223416694_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="glow-button bg-purple-500 hover:bg-purple-600 px-6 py-3 rounded-lg text-white font-medium inline-block">
-                            View Certificate
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- Certificates Section -->
-<section id="certificates" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-5xl font-bold text-center gradient-text mb-20">Certificates</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- Certificate cards -->
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fas fa-chart-line text-4xl text-blue-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Career Essentials in Data Analysis</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Data Cleaning, Data Visualization, Analysis Techniques</p>
-                <a href="https://adhishbiju2000.github.io/Personal-Portfolio-Adhish/Microsofte%20certificate.jpeg" target="_blank" class="glow-button bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fab fa-python text-4xl text-yellow-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Python Foundation Certification</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Understanding Foundation of Python</p>
-                <a href="https://adhishbiju2000.github.io/Personal-Portfolio-Adhish/Python%20Foundation%20Certification.jpg" target="_blank" class="glow-button bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fas fa-trophy text-4xl text-orange-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Go for Gold Contest</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Programming Languages, Software Engineering, Cybersecurity</p>
-                <a href="https://adhishbiju2000.github.io/Personal-Portfolio-Adhish/Adhish%20Biju_Go%20for%20Gold_iAspire%20certificate%20(1)_page-0001.jpg" target="_blank" class="glow-button bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fab fa-python text-4xl text-green-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Python Complete Course</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Python Programming, Automation</p>
-                <a href="https://udemy-certificate.s3.amazonaws.com/image/UC-d71d25be-2a17-4248-8840-45a3558a3291.jpg" target="_blank" class="glow-button bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fas fa-chart-bar text-4xl text-purple-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Get Started Building with Power BI</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Dynamic Dashboards, Data-Driven Reports</p>
-                <a href="https://learn.microsoft.com/en-us/users/AdhishBiju-1779/achievements/HAFDPT78?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" class="glow-button bg-purple-500 hover:bg-purple-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fas fa-database text-4xl text-red-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Introduction to LLM</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Large Language Models</p>
-                <a href="https://www.cloudskillsboost.google/public_profiles/4ed27179-f425-462a-9308-e357067bcdb0/badges/11247156?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" target="_blank" class="glow-button bg-red-500 hover:bg-red-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fas fa-network-wired text-4xl text-cyan-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Data Analytics Essentials by CISCO</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Python Programming, Data Cleaning, Data Visualization</p>
-                <a href="https://www.credly.com/badges/3af1c0c5-0ea1-46f6-ae99-e9f21fff952b/linked_in_profile" target="_blank" class="glow-button bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fas fa-chart-area text-4xl text-indigo-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Power BI for Business Professionals</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Dynamic Dashboards, Data-Driven Reports</p>
-                <a href="https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_01329487630381056036366_shared/1-59c0f10b-582f-4425-8eba-798c665631d6.pdf" target="_blank" class="glow-button bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col h-96">
-                <div class="bg-white h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                    <i class="fas fa-briefcase text-4xl text-pink-500"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-3 text-gray-800 h-12 flex items-center">Introduction to Generative AI</h3>
-                <p class="text-gray-600 mb-6 flex-grow text-sm">Artifical Intelligence</p>
-                <a href="https://www.cloudskillsboost.google/public_profiles/4ed27179-f425-462a-9308-e357067bcdb0/badges/11247071?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" target="_blank" class="glow-button bg-pink-500 hover:bg-pink-600 px-6 py-3 rounded-lg text-white font-medium inline-block text-center mt-auto">
-                    View Certificate
-                </a>
-            </div>
-        </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-wrap">
+    <div>
+      <div class="hero-tag">Data Analyst &nbsp;·&nbsp; Open to Opportunities</div>
+      <h1>Adhish Biju</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-desc">Turning raw data into clear business insights. Skilled in Power BI, SQL, Excel and Python — focused on helping organisations make confident, data-driven decisions.</p>
+      <div class="btns">
+        <a href="./Adhish Biju Resume.pdf" download class="btn btn-dark"><i class="fas fa-download"></i> Download Resume</a>
+        <a href="#projects" class="btn btn-out"><i class="fas fa-folder-open"></i> View Projects</a>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/adhishbiju/" target="_blank" class="soc" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/adhishbiju2000" target="_blank" class="soc" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adhishbiju2000@gmail.com" target="_blank" class="soc" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
     </div>
+    <div>
+      <div class="hero-card">
+        <img src="./Super Adhish Photo.jpg" alt="Adhish Biju" class="hero-photo"
+          onerror="this.style.display='none';document.getElementById('ph').style.display='flex'">
+        <div id="ph" class="hero-photo-ph" style="display:none;">AB</div>
+        <div class="hero-stats">
+          <div class="hs"><div class="hs-num">10+</div><div class="hs-lbl">Projects</div></div>
+          <div class="hs"><div class="hs-num">9+</div><div class="hs-lbl">Certs</div></div>
+          <div class="hs"><div class="hs-num">7.2</div><div class="hs-lbl">CGPA</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-            
-<!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center gradient-text mb-16">Projects</h2>
-            
-<body class="bg-gray-50 p-8">
-    <!-- Major Project -->
-    <div class="mb-16 max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-            <h3 class="text-4xl lg:text-5xl font-bold mb-4 text-gray-800">
-                B-Tech Major Project
-            </h3>
-            <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto rounded-full"></div>
+
+<!-- ABOUT -->
+<section id="about" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-hd rv"><div class="eyebrow">About</div><h2 class="sec-title">Profile</h2></div>
+    <div class="about-grid">
+      <div class="about-text rv">
+        <p>I am a final-year <strong>B.Tech Information Technology</strong> student at Pillai College of Engineering, Mumbai, specialising in <strong>Data Analytics</strong>. My focus is on translating business questions into structured analysis and presenting findings in a way that any stakeholder can act on.</p>
+        <p>I work across the full analytics workflow — from data extraction with <strong>SQL</strong>, cleaning and modelling in <strong>Excel and Python</strong>, through to reporting and dashboard design in <strong>Power BI</strong>. I take pride in producing work that is accurate, clearly communicated and directly tied to business value.</p>
+        <p>I am actively seeking a <strong>Data Analyst</strong> role where I can contribute to a data-driven team and grow within a professional environment.</p>
+      </div>
+      <div class="rv d2">
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">SQL & Data Querying</span><span class="sk-pct">90%</span></div><div class="sk-track"><div class="sk-bar" data-w="0.90"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Excel & Power Query</span><span class="sk-pct">88%</span></div><div class="sk-track"><div class="sk-bar" data-w="0.88"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Power BI & DAX</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-bar" data-w="0.85"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Python (Pandas, NumPy)</span><span class="sk-pct">82%</span></div><div class="sk-track"><div class="sk-bar" data-w="0.82"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">Data Visualisation</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-bar" data-w="0.80"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span class="sk-name">EDA & Statistical Analysis</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-bar" data-w="0.78"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="wrap">
+    <div class="sec-hd rv"><div class="eyebrow">Toolkit</div><h2 class="sec-title">Core Competencies</h2><p class="sec-sub">Tools and techniques I use to deliver reliable, business-ready analytics.</p></div>
+    <div class="sk-grid">
+      <div class="sk-card rv d1"><div class="sk-icon" style="background:#dbeafe;color:#1d4ed8"><i class="fas fa-database"></i></div><h3>SQL & Databases</h3><p>MySQL, PostgreSQL, SQLite — writing queries, joins, window functions and CTEs to answer business questions from relational data.</p></div>
+      <div class="sk-card rv d2"><div class="sk-icon" style="background:#fef3c7;color:#d97706"><i class="fas fa-chart-bar"></i></div><h3>Power BI</h3><p>Interactive dashboards, DAX measures, data modelling and reports that communicate KPIs clearly to stakeholders at every level.</p></div>
+      <div class="sk-card rv d3"><div class="sk-icon" style="background:#dcfce7;color:#15803d"><i class="fas fa-table"></i></div><h3>Excel & Power Query</h3><p>Pivot tables, advanced formulas, Power Query transformations and dynamic dashboards for business reporting and analysis.</p></div>
+      <div class="sk-card rv d1"><div class="sk-icon" style="background:#ede9fe;color:#7c3aed"><i class="fab fa-python"></i></div><h3>Python Analytics</h3><p>Pandas, NumPy, Matplotlib and Seaborn for data cleaning, exploratory analysis and chart-based storytelling.</p></div>
+      <div class="sk-card rv d2"><div class="sk-icon" style="background:#fee2e2;color:#dc2626"><i class="fas fa-chart-line"></i></div><h3>Data Visualisation</h3><p>Designing clean, purposeful charts and dashboards that convey the right insight to the right audience without clutter.</p></div>
+      <div class="sk-card rv d3"><div class="sk-icon" style="background:#cffafe;color:#0891b2"><i class="fas fa-magnifying-glass-chart"></i></div><h3>EDA & Data Cleaning</h3><p>Missing value handling, outlier detection, feature understanding and structured exploratory workflows ahead of analysis.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-hd rv"><div class="eyebrow">Experience</div><h2 class="sec-title">Professional Experience</h2><p class="sec-sub">Internship and industry simulation programmes in data analytics.</p></div>
+    <div class="exp-box rv">
+      <div class="exp-tabs">
+        <div class="exp-tab active" data-t="e1"><div class="et-role">Data Analyst Intern</div><div class="et-co">Cloud Counselage</div><div class="et-yr">2025</div></div>
+        <div class="exp-tab" data-t="e2"><div class="et-role">Job Simulation</div><div class="et-co">TATA Group</div><div class="et-yr">2024</div></div>
+        <div class="exp-tab" data-t="e3"><div class="et-role">Job Simulation</div><div class="et-co">Accenture</div><div class="et-yr">2024</div></div>
+      </div>
+      <div class="exp-panel">
+        <div class="exp-pane active" id="e1">
+          <h3>Data Analyst Intern</h3><span class="exp-badge">Cloud Counselage</span>
+          <p>Gained hands-on experience in data collection, cleaning, analysis and visualisation. Contributed to real business analytics tasks, built dashboards and generated insights from structured datasets to support decision-making.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Data Analysis</span><span class="tag">Dashboard Design</span><span class="tag">EDA</span></div>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7311726160822906880/" target="_blank" class="cert-lnk">View Certificate <i class="fas fa-arrow-up-right-from-square"></i></a>
         </div>
-        
-        <div class="bg-white rounded-3xl p-8 lg:p-12 card-hover shadow-xl border border-gray-200 relative overflow-hidden">
-            <!-- Background Decoration -->
-            <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-100 to-transparent rounded-full -translate-y-20 translate-x-20 opacity-50"></div>
-            <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-green-100 to-transparent rounded-full translate-y-16 -translate-x-16 opacity-50"></div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                
-                <!-- Project Image with Enhanced Styling -->
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 h-72 lg:h-96 rounded-2xl flex items-center justify-center shadow-inner overflow-hidden border-2 border-gray-200">
-                        <!-- Placeholder for your actual project image -->
-                        <img src="./Agro AI Image.png" alt="AgroAI Assist Project" class="project-image object-cover w-full h-full rounded-2xl">
-                    </div>
-                    
-                    <!-- Status Badge -->
-                    <div class="absolute -top-3 -right-3">
-                        <span class="status-badge px-4 py-2 rounded-full text-white text-sm font-semibold shadow-lg">
-                            Ongoing
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- Project Details -->
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-3xl lg:text-4xl font-bold gradient-text mb-4 leading-tight">
-                            AgroAI Assist – AI Powered Soil and Plant Health Detection
-                        </h4>
-                        <p class="text-gray-700 mb-6 text-lg leading-relaxed text-justify">
-                            An innovative agricultural solution that leverages artificial intelligence to revolutionize farming practices. 
-                            This comprehensive platform assists farmers with real-time crop monitoring, soil health analysis, 
-                            and intelligent agricultural insights through advanced image processing and machine learning algorithms.
-                        </p>
-                    </div>
-
-                    <!-- Technology Stack -->
-                    <div class="mb-6">
-                        <h5 class="text-lg font-semibold text-gray-800 mb-3"> Technology Stack</h5>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">Flask</span>
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">Tailwindcss</span>
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">Firebase</span>
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">HTML 5</span>
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">SQLAlchemy</span>
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">OpenWeatherMap API</span>
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">OpenAPI</span>
-                            <span class="tech-badge px-3 py-1 rounded-full text-sm font-medium">CNN</span>
-                        </div>
-                    </div>
-
-                    <!-- Key Features Grid -->
-                    <div class="mb-8">
-                        <h5 class="text-lg font-semibold text-gray-800 mb-4"> Key Features</h5>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div class="feature-item flex items-center space-x-3">
-                                <span class="text-2xl"></span>
-                                <span class="text-gray-700 font-medium">1. Plant Disease Detection using CNN</span>
-                            </div>
-                            <div class="feature-item flex items-center space-x-3">
-                                <span class="text-2xl"></span>
-                                <span class="text-gray-700 font-medium">2. Soil Health Analysis with ML</span>
-                            </div>
-                            <div class="feature-item flex items-center space-x-3">
-                                <span class="text-2xl"></span>
-                                <span class="text-gray-700 font-medium">3. Real-Time Weather Forecasting</span>
-                            </div>
-                            <div class="feature-item flex items-center space-x-3">
-                                <span class="text-2xl"></span>
-                                <span class="text-gray-700 font-medium">4. AI-Powered Expert Chatbot</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://github.com/adhishbiju2000/AgroAI-Assit-B.Tech-final-year-project/blob/main/Major%20Project-I%20Report%20(1).pdf" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="glow-button bg-gradient-to-r from-green-500 to-blue-500 px-8 py-4 rounded-xl text-white font-semibold text-lg text-center inline-block group">
-                            <span class="flex items-center justify-center space-x-2">
-                                <svg class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
-                                </svg>
-                                <span>View Project</span>
-                            </span>
-                        </a>
-                        
-                        <a href="https://your-live-demo-link.com" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="bg-white border-2 border-gray-300 px-8 py-4 rounded-xl text-gray-700 font-semibold text-lg hover:border-blue-400 hover:text-blue-600 transition-all duration-300 text-center inline-block group">
-                            <span class="flex items-center justify-center space-x-2">
-                                <svg class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                </svg>
-                                <span>Live Demo</span>
-                            </span>
-                        </a>
-                    </div>
-
-                    <!-- Project Stats -->
-                    <div class="pt-6 border-t border-gray-200">
-                        <div class="grid grid-cols-3 gap-4 text-center">
-                            <div>
-                                <div class="text-2xl font-bold text-green-600">95%</div>
-                                <div class="text-sm text-gray-600">Accuracy</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-blue-600">50+</div>
-                                <div class="text-sm text-gray-600">Plant Diseases</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-purple-600">24/7</div>
-                                <div class="text-sm text-gray-600">Monitoring</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="exp-pane" id="e2">
+          <h3>Data Analytics Simulation</h3><span class="exp-badge">TATA Group — Forage</span>
+          <p>Completed TATA Group's virtual data analytics job simulation via Forage. Framed business questions, analysed structured datasets and communicated findings through visual presentations aimed at senior stakeholders.</p>
+          <div class="tags"><span class="tag">Business Analytics</span><span class="tag">Data Storytelling</span><span class="tag">Visualisation</span><span class="tag">Stakeholder Reporting</span></div>
+          <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Tata/MyXvBcppsW2FkNYCX_Tata%20Group_LsJv6Zg8aaPYZmdhp_1725082256214_completion_certificate.pdf" target="_blank" class="cert-lnk">View Certificate <i class="fas fa-arrow-up-right-from-square"></i></a>
         </div>
+        <div class="exp-pane" id="e3">
+          <h3>Data Analytics & Visualisation</h3><span class="exp-badge">Accenture North America — Forage</span>
+          <p>Completed Accenture's data analytics and visualisation simulation. Cleaned and modelled data from multiple sources, identified business trends and presented actionable insights to a simulated client team.</p>
+          <div class="tags"><span class="tag">Excel</span><span class="tag">Data Modelling</span><span class="tag">Visualisation</span><span class="tag">Client Communication</span></div>
+          <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_LsJv6Zg8aaPYZmdhp_1722223416694_completion_certificate.pdf" target="_blank" class="cert-lnk">View Certificate <i class="fas fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+  <div class="wrap">
+    <div class="sec-hd rv"><div class="eyebrow">Work</div><h2 class="sec-title">Projects</h2><p class="sec-sub">Academic, engineering and personal analytics projects.</p></div>
+
+    <!-- Major -->
+    <div class="major-card rv">
+      <div class="mc-img">
+        <img src="./Agro AI Image.png" alt="AgroAI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="mc-img-ph" style="display:none"><i class="fas fa-seedling"></i></div>
+        <span class="mc-flag">B.Tech Final Year Project</span>
+        <span class="mc-live">Ongoing</span>
+      </div>
+      <div class="mc-body">
+        <h3>AgroAI Assist — AI Powered Soil & Plant Health Detection</h3>
+        <p>An end-to-end agricultural intelligence platform enabling farmers to monitor crop health, analyse soil conditions and receive real-time weather insights through ML-powered image analysis and an expert chatbot.</p>
+        <div class="tech-pills"><span class="tp">Flask</span><span class="tp">CNN</span><span class="tp">Firebase</span><span class="tp">SQLAlchemy</span><span class="tp">OpenWeatherMap API</span><span class="tp">OpenAI API</span></div>
+        <a href="https://github.com/adhishbiju2000/AgroAI-Assit-B.Tech-final-year-project/blob/main/Major%20Project-I%20Report%20(1).pdf" target="_blank" class="mc-link">View Project Report <i class="fas fa-arrow-up-right-from-square"></i></a>
+        <div class="mc-stats">
+          <div><div class="ms-num">95%</div><div class="ms-lbl">Accuracy</div></div>
+          <div><div class="ms-num">50+</div><div class="ms-lbl">Diseases</div></div>
+          <div><div class="ms-num">24/7</div><div class="ms-lbl">Monitoring</div></div>
+        </div>
+      </div>
     </div>
 
-            
-<!-- Engineering Mini Projects -->
-<div class="mb-16">
-    <h3 class="text-3xl font-semibold mb-10 text-center text-gray-800">Engineering Mini Projects</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Project 1: SolvRX -->
-        <div class="bg-white rounded-2xl p-6 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[380px]">
-            <div class="bg-gray-50 h-24 rounded-xl mb-4 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-user-md text-3xl text-blue-500"></i>
-            </div>
-            <h4 class="font-semibold mb-2 text-gray-800 text-lg leading-tight">SolvRX: Doctor Appointment Website</h4>
-            <p class="text-gray-600 mb-3 flex-grow text-sm leading-relaxed">Developed a user-friendly and responsive doctor appointment website. Focused on simple navigation for all age groups.</p>
-            <div class="bg-blue-50 rounded-lg px-2 py-1 mb-4">
-                <p class="text-xs text-blue-700 font-semibold">Skills: HTML, CSS, Javascript, MySQL</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Doctor-Appointment-website-SolvRX" target="_blank" rel="noopener noreferrer"
-               class="bg-blue-500 text-white hover:bg-blue-600 rounded-lg px-3 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-sm inline-block text-center">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 2: Face Recognition -->
-        <div class="bg-white rounded-2xl p-6 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[380px]">
-            <div class="bg-gray-50 h-24 rounded-xl mb-4 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-eye text-3xl text-green-500"></i>
-            </div>
-            <h4 class="font-semibold mb-2 text-gray-800 text-lg leading-tight">Face Recognition Based Attendance System</h4>
-            <p class="text-gray-600 mb-3 flex-grow text-sm leading-relaxed">An AI Based Attendance system using Machine Learning and Artificial Intelligence to take the attendance of students.</p>
-            <div class="bg-green-50 rounded-lg px-2 py-1 mb-4">
-                <p class="text-xs text-green-700 font-semibold">Skills: Machine Learning, Image Analysis, Django</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Mini-Project-Machine-Learing/blob/main/Mini%20Project%20MI.pdf" target="_blank" rel="noopener noreferrer"
-               class="bg-green-500 text-white hover:bg-green-600 rounded-lg px-3 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-sm inline-block text-center">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 3: Product Recommendation -->
-        <div class="bg-white rounded-2xl p-6 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[380px]">
-            <div class="bg-gray-50 h-24 rounded-xl mb-4 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-chart-bar text-3xl text-purple-500"></i>
-            </div>
-            <h4 class="font-semibold mb-2 text-gray-800 text-lg leading-tight">Product Recommendation System</h4>
-            <p class="text-gray-600 mb-3 flex-grow text-sm leading-relaxed">Using R Programming and its Libraries analyzed various products to recommend to customers.</p>
-            <div class="bg-purple-50 rounded-lg px-2 py-1 mb-4">
-                <p class="text-xs text-purple-700 font-semibold">Skills: R Programming</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/R-Programing-Product-Recommendation-System/blob/main/Mini_Project_R_programming_Final%5B3%5D.pdf target="_blank" rel="noopener noreferrer"
-               class="bg-purple-500 text-white hover:bg-purple-600 rounded-lg px-3 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-sm inline-block text-center">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 4: Healthy Hab App -->
-        <div class="bg-white rounded-2xl p-6 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[380px]">
-            <div class="bg-gray-50 h-24 rounded-xl mb-4 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-mobile-alt text-3xl text-orange-500"></i>
-            </div>
-            <h4 class="font-semibold mb-2 text-gray-800 text-lg leading-tight">Healthy Hab Android App</h4>
-            <p class="text-gray-600 mb-3 flex-grow text-sm leading-relaxed">Developed an app using Android Studio. This app helps users monitor and improve their lifestyle.</p>
-            <div class="bg-orange-50 rounded-lg px-2 py-1 mb-4">
-                <p class="text-xs text-orange-700 font-semibold">Skills: Android Studio, Java Programming</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Healthy-Hab-Android-Development" target="_blank" rel="noopener noreferrer"
-               class="bg-orange-500 text-white hover:bg-orange-600 rounded-lg px-3 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-sm inline-block text-center">
-               View Details
-            </a>
-        </div>
-        
+    <!-- Engineering Mini -->
+    <div class="sub-lbl rv">Engineering Mini Projects</div>
+    <div class="proj-grid">
+      <div class="pc rv d1"><div class="pc-icon" style="background:#dbeafe;color:#1d4ed8"><i class="fas fa-user-md"></i></div><h4>SolvRX: Doctor Appointment Website</h4><p>Responsive appointment booking site with simple, accessible navigation for all age groups.</p><div class="pc-tag">HTML · CSS · JS · MySQL</div><a href="https://github.com/adhishbiju2000/Doctor-Appointment-website-SolvRX" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc rv d2"><div class="pc-icon" style="background:#dcfce7;color:#15803d"><i class="fas fa-eye"></i></div><h4>Face Recognition Attendance System</h4><p>ML and computer vision based attendance system for automated student tracking.</p><div class="pc-tag">ML · Django · OpenCV</div><a href="https://github.com/adhishbiju2000/Mini-Project-Machine-Learing/blob/main/Mini%20Project%20MI.pdf" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc rv d3"><div class="pc-icon" style="background:#ede9fe;color:#7c3aed"><i class="fas fa-chart-bar"></i></div><h4>Product Recommendation System</h4><p>R-based system analysing product data to generate personalised customer recommendations.</p><div class="pc-tag">R Programming</div><a href="https://github.com/adhishbiju2000/R-Programing-Product-Recommendation-System" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc rv d4"><div class="pc-icon" style="background:#fff7ed;color:#c2410c"><i class="fas fa-mobile-alt"></i></div><h4>Healthy Hab Android App</h4><p>Android lifestyle monitoring app for tracking and improving daily health habits.</p><div class="pc-tag">Android Studio · Java</div><a href="https://github.com/adhishbiju2000/Healthy-Hab-Android-Development" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
     </div>
-</div>
 
-
-            <!-- Personal Projects Section -->
-<div class="mb-20">
-    <h3 class="text-3xl font-semibold mb-12 text-center text-gray-800">Personal Projects</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        
-        <!-- Project 1: Sales Dashboard -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-chart-line text-4xl text-blue-600"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">Sales Dashboard 2024</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Detailed sales insights with Excel pivot tables & dashboards for comprehensive business analytics.</p>
-            <div class="bg-blue-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-blue-700 font-semibold">Skills: Excel, Pivot Tables, Dashboarding</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Sales-Dashboard-2024-in-Excel" target="_blank" rel="noopener noreferrer"
-               class="bg-blue-600 text-white hover:bg-blue-700 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 2: Vrinda Store -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-store text-4xl text-green-600"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">Vrinda Store Data Analysis</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Analysed 2023 sales & customer behaviour with comprehensive Excel dashboard and visualizations.</p>
-            <div class="bg-green-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-green-700 font-semibold">Skills: Excel, Data Analysis, Visualisation</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Vrinda-Store-Data-Analysis-using-Microsoft-Excel" target="_blank" rel="noopener noreferrer"
-               class="bg-green-600 text-white hover:bg-green-700 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 3: HR Analytics -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-users text-4xl text-purple-600"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">HR Analytics Report</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Attrition analysis by role, salary & age using Power BI for strategic HR insights.</p>
-            <div class="bg-purple-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-purple-700 font-semibold">Skills: Power BI, HR Metrics, Trend Analysis</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Microsoft-Power-Bi-HR-Analytic-Report" target="_blank" rel="noopener noreferrer"
-               class="bg-purple-600 text-white hover:bg-purple-700 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 4: Advanced HR Analytics -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-user-tie text-4xl text-yellow-600"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">MADHAV ECOMMERCE SALE DASHBOARD</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Power BI report with Data Modelling & DAX for advanced attrition insights.</p>
-            <div class="bg-yellow-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-yellow-700 font-semibold">Skills: Power BI, Data Modelling, DAX</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Microsoft-PowerBI-MADHAV-ECOMMERCE-SALE-DASHBOARD" target="_blank" rel="noopener noreferrer"
-               class="bg-yellow-600 text-white hover:bg-yellow-700 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 5: Webpage Design -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fab fa-html5 text-4xl text-red-500"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">Webpage Design</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Designed a professional webpage for client's YouTube channel using modern HTML/CSS.</p>
-            <div class="bg-red-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-red-700 font-semibold">Skills: HTML, CSS, JavaScript</p>
-            </div>
-            <a href="https://adhishbiju2000.github.io/sheeba-s-Kitchen-world/" target="_blank" rel="noopener noreferrer"
-               class="bg-red-500 text-white hover:bg-red-600 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 6: Gym Dashboard -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-dumbbell text-4xl text-pink-500"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">Gym Members Dashboard</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Analysed gym members' health & workout data using advanced BI dashboard.</p>
-            <div class="bg-pink-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-pink-700 font-semibold">Skills: Power BI, Data Analysis</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Gym-Members-Exercise-Analysis-Report-on-PowerBI" target="_blank" rel="noopener noreferrer"
-               class="bg-pink-500 text-white hover:bg-pink-600 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 7: Global Waste Report -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-globe text-4xl text-teal-600"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">Global Plastic Waste Report</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Explored 2023 dataset with innovative Power BI visualisations and insights.</p>
-            <div class="bg-teal-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-teal-700 font-semibold">Skills: Power BI, Trend Analysis</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Global-Plastic-Waste-2023" target="_blank" rel="noopener noreferrer"
-               class="bg-teal-600 text-white hover:bg-teal-700 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 8: Student Behaviour -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-user-graduate text-4xl text-indigo-500"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">Student Behaviour Dashboard</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Analysed student jobs, education & salary patterns with advanced BI tools.</p>
-            <div class="bg-indigo-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-indigo-700 font-semibold">Skills: Power BI, Data Cleaning, Charts</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Microsoft-Power-Bi-Student-Attitude-and-Behavior-Report" target="_blank" rel="noopener noreferrer"
-               class="bg-indigo-500 text-white hover:bg-indigo-600 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 9: Expense Tracker -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-wallet text-4xl text-orange-500"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">Expense Tracker App</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Web-based app built with Flask & SQLite for comprehensive personal finance tracking.</p>
-            <div class="bg-orange-50 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-orange-700 font-semibold">Skills: Python, Flask, SQLite</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Expense-Track-App-using-Python-Flask" target="_blank" rel="noopener noreferrer"
-               class="bg-orange-500 text-white hover:bg-orange-600 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
-        <!-- Project 10: MyTodo App -->
-        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg border border-gray-200 flex flex-col min-h-[400px]">
-            <div class="bg-gray-50 h-32 rounded-xl mb-6 flex items-center justify-center shadow-inner flex-shrink-0">
-                <i class="fas fa-tasks text-4xl text-gray-700"></i>
-            </div>
-            <h4 class="font-semibold mb-3 text-gray-800 text-lg leading-tight">MyTodo App</h4>
-            <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">Elegant Todo app built with Flask & SQLAlchemy for efficient task management.</p>
-            <div class="bg-gray-200 rounded-lg px-3 py-2 mb-6">
-                <p class="text-xs text-gray-700 font-semibold">Skills: Flask, SQLAlchemy</p>
-            </div>
-            <a href="https://github.com/adhishbiju2000/Todos-List-using-Flask" target="_blank" rel="noopener noreferrer"
-               class="bg-gray-700 text-white hover:bg-gray-800 rounded-lg px-4 py-2 font-medium transition-all duration-300 mt-auto shadow-md hover:shadow-lg text-center inline-block">
-               View Details
-            </a>
-        </div>
-        
+    <!-- Personal -->
+    <div class="sub-lbl rv">Personal Data Projects</div>
+    <div class="proj-grid-5">
+      <div class="pc sm rv d1"><div class="pc-icon" style="background:#dbeafe;color:#1d4ed8"><i class="fas fa-chart-line"></i></div><h4>Sales Dashboard 2024</h4><p>Excel pivot dashboard for comprehensive sales insights.</p><div class="pc-tag">Excel</div><a href="https://github.com/adhishbiju2000/Sales-Dashboard-2024-in-Excel" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d2"><div class="pc-icon" style="background:#dcfce7;color:#15803d"><i class="fas fa-store"></i></div><h4>Vrinda Store Analysis</h4><p>2023 sales and customer behaviour analysis.</p><div class="pc-tag">Excel · EDA</div><a href="https://github.com/adhishbiju2000/Vrinda-Store-Data-Analysis-using-Microsoft-Excel" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d3"><div class="pc-icon" style="background:#ede9fe;color:#7c3aed"><i class="fas fa-users"></i></div><h4>HR Analytics Report</h4><p>Attrition analysis by role, salary and age.</p><div class="pc-tag">Power BI</div><a href="https://github.com/adhishbiju2000/Microsoft-Power-Bi-HR-Analytic-Report" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d4"><div class="pc-icon" style="background:#fef3c7;color:#b45309"><i class="fas fa-shopping-cart"></i></div><h4>Madhav Ecommerce Dashboard</h4><p>Ecommerce sales report with Data Modelling and DAX.</p><div class="pc-tag">Power BI · DAX</div><a href="https://github.com/adhishbiju2000/Microsoft-PowerBI-MADHAV-ECOMMERCE-SALE-DASHBOARD" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d5"><div class="pc-icon" style="background:#fce7f3;color:#be185d"><i class="fas fa-dumbbell"></i></div><h4>Gym Members Dashboard</h4><p>Member health and workout data analysis.</p><div class="pc-tag">Power BI</div><a href="https://github.com/adhishbiju2000/Gym-Members-Exercise-Analysis-Report-on-PowerBI" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d1"><div class="pc-icon" style="background:#d1fae5;color:#047857"><i class="fas fa-globe"></i></div><h4>Global Plastic Waste Report</h4><p>2023 global waste dataset explored with Power BI.</p><div class="pc-tag">Power BI</div><a href="https://github.com/adhishbiju2000/Global-Plastic-Waste-2023" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d2"><div class="pc-icon" style="background:#e0e7ff;color:#4338ca"><i class="fas fa-user-graduate"></i></div><h4>Student Behaviour Dashboard</h4><p>Student jobs, education and salary patterns.</p><div class="pc-tag">Power BI</div><a href="https://github.com/adhishbiju2000/Microsoft-Power-Bi-Student-Attitude-and-Behavior-Report" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d3"><div class="pc-icon" style="background:#fff7ed;color:#c2410c"><i class="fas fa-wallet"></i></div><h4>Expense Tracker App</h4><p>Personal finance tracker with Flask and SQLite.</p><div class="pc-tag">Python · Flask</div><a href="https://github.com/adhishbiju2000/Expense-Track-App-using-Python-Flask" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d4"><div class="pc-icon" style="background:#f1f5f9;color:#475569"><i class="fas fa-tasks"></i></div><h4>MyTodo App</h4><p>Task management app using Flask and SQLAlchemy.</p><div class="pc-tag">Flask · SQL</div><a href="https://github.com/adhishbiju2000/Todos-List-using-Flask" target="_blank" class="pc-lnk">GitHub <i class="fas fa-arrow-up-right"></i></a></div>
+      <div class="pc sm rv d5"><div class="pc-icon" style="background:#fee2e2;color:#b91c1c"><i class="fab fa-html5"></i></div><h4>Webpage Design</h4><p>Professional webpage for a client's YouTube channel.</p><div class="pc-tag">HTML · CSS · JS</div><a href="https://adhishbiju2000.github.io/sheeba-s-Kitchen-world/" target="_blank" class="pc-lnk">Live Site <i class="fas fa-arrow-up-right"></i></a></div>
     </div>
-</div>
+  </div>
+</section>
 
-    </section>
+<!-- CERTIFICATES -->
+<section id="certificates" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-hd rv"><div class="eyebrow">Credentials</div><h2 class="sec-title">Certifications</h2><p class="sec-sub">Industry certifications and courses completed in data analytics and related fields.</p></div>
+    <div class="cert-grid">
+      <div class="cert-card rv d1"><div class="cert-icon" style="background:#dbeafe;color:#1d4ed8"><i class="fas fa-chart-line"></i></div><div class="cert-info"><h4>Career Essentials in Data Analysis</h4><p>Microsoft — Data Cleaning, Visualisation, Analysis</p><a href="https://adhishbiju2000.github.io/Personal-Portfolio-Adhish/Microsofte%20certificate.jpeg" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d2"><div class="cert-icon" style="background:#fef3c7;color:#d97706"><i class="fab fa-python"></i></div><div class="cert-info"><h4>Python Foundation Certification</h4><p>Python Foundations & Programming Essentials</p><a href="https://adhishbiju2000.github.io/Personal-Portfolio-Adhish/Python%20Foundation%20Certification.jpg" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d3"><div class="cert-icon" style="background:#dcfce7;color:#15803d"><i class="fab fa-python"></i></div><div class="cert-info"><h4>Python Complete Course</h4><p>Udemy — Python Programming & Automation</p><a href="https://udemy-certificate.s3.amazonaws.com/image/UC-d71d25be-2a17-4248-8840-45a3558a3291.jpg" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d1"><div class="cert-icon" style="background:#ede9fe;color:#7c3aed"><i class="fas fa-chart-bar"></i></div><div class="cert-info"><h4>Get Started with Power BI</h4><p>Microsoft — Dashboards & Data-Driven Reports</p><a href="https://learn.microsoft.com/en-us/users/AdhishBiju-1779/achievements/HAFDPT78" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d2"><div class="cert-icon" style="background:#e0e7ff;color:#4338ca"><i class="fas fa-chart-area"></i></div><div class="cert-info"><h4>Power BI for Business Professionals</h4><p>Infosys Springboard — Advanced Dashboards & DAX</p><a href="https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_01329487630381056036366_shared/1-59c0f10b-582f-4425-8eba-798c665631d6.pdf" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d3"><div class="cert-icon" style="background:#cffafe;color:#0e7490"><i class="fas fa-network-wired"></i></div><div class="cert-info"><h4>Data Analytics Essentials — Cisco</h4><p>Python, Data Cleaning & Visualisation</p><a href="https://www.credly.com/badges/3af1c0c5-0ea1-46f6-ae99-e9f21fff952b/linked_in_profile" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d1"><div class="cert-icon" style="background:#fee2e2;color:#b91c1c"><i class="fas fa-robot"></i></div><div class="cert-info"><h4>Introduction to LLM</h4><p>Google Cloud Skills Boost — Large Language Models</p><a href="https://www.cloudskillsboost.google/public_profiles/4ed27179-f425-462a-9308-e357067bcdb0/badges/11247156" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d2"><div class="cert-icon" style="background:#fdf4ff;color:#a21caf"><i class="fas fa-brain"></i></div><div class="cert-info"><h4>Introduction to Generative AI</h4><p>Google Cloud Skills Boost — AI Foundations</p><a href="https://www.cloudskillsboost.google/public_profiles/4ed27179-f425-462a-9308-e357067bcdb0/badges/11247071" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+      <div class="cert-card rv d3"><div class="cert-icon" style="background:#fff7ed;color:#c2410c"><i class="fas fa-trophy"></i></div><div class="cert-info"><h4>Go for Gold Contest</h4><p>iAspire — Programming, Engineering & Cybersecurity</p><a href="https://adhishbiju2000.github.io/Personal-Portfolio-Adhish/Adhish%20Biju_Go%20for%20Gold_iAspire%20certificate%20(1)_page-0001.jpg" target="_blank">View <i class="fas fa-external-link-alt"></i></a></div></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl lg:text-5xl font-bold text-center gradient-text mb-16">Contact Me</h2>
-            <div class="bg-gray-50 rounded-3xl p-8 lg:p-12 shadow-xl border border-gray-200">
-                <form class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-lg font-medium mb-2 text-gray-700">Name</label>
-                            <input type="text" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all" placeholder="Your Name">
-                        </div>
-                        <div>
-                            <label class="block text-lg font-medium mb-2 text-gray-700">Email</label>
-                            <input type="email" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all" placeholder="your.email@example.com">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-lg font-medium mb-2 text-gray-700">Message</label>
-                        <textarea rows="5" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none" placeholder="Your message..."></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="glow-button bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-3 rounded-xl text-white font-semibold text-lg hover:from-blue-600 hover:to-purple-700">
-                            <i class="fas fa-paper-plane mr-2"></i>Send Message
-                        </button>
-                    </div>
-                </form>
-                
-                <!-- Social Media Links -->
-                <div class="mt-10 text-center">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Connect with me</h3>
-                    <div class="flex justify-center space-x-6">
-                        <a href="https://www.linkedin.com/in/adhishbiju/" class="text-3xl text-blue-500 hover:text-blue-400 transition-colors hover:scale-110 transform">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/adhishbiju2000" class="text-3xl text-gray-700 hover:text-gray-600 transition-colors hover:scale-110 transform">
-                            <i class="fab fa-github"></i>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adhishbiju2000@gmail.com" 
-                        target="_blank" 
-                        class="text-3xl text-red-500 hover:text-red-400 transition-colors hover:scale-110 transform">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<!-- EDUCATION -->
+<section id="education" class="sec">
+  <div class="wrap">
+    <div class="sec-hd rv"><div class="eyebrow">Background</div><h2 class="sec-title">Education</h2></div>
+    <div class="edu-row">
+      <div class="edu-card dk rv d1">
+        <div class="edu-lbl">2022 – 2026</div>
+        <div class="edu-ic"><i class="fas fa-graduation-cap"></i></div>
+        <h3>B.Tech in Information Technology</h3>
+        <p class="edu-inst">Pillai College of Engineering, Mumbai</p>
+        <div class="edu-score-wrap"><div class="edu-score">7.2</div><div class="edu-score-lbl">CGPA</div></div>
+      </div>
+      <div class="edu-card lt rv d2">
+        <div class="edu-lbl">Higher Secondary</div>
+        <div class="edu-ic"><i class="fas fa-school"></i></div>
+        <h3>Higher Secondary (Science)</h3>
+        <p class="edu-inst">MADP Junior College</p>
+        <div class="edu-score-wrap"><div class="edu-score">73.4%</div><div class="edu-score-lbl">Percentage</div></div>
+      </div>
+      <div class="edu-card md rv d3">
+        <div class="edu-lbl">Secondary School</div>
+        <div class="edu-ic"><i class="fas fa-book"></i></div>
+        <h3>Secondary School</h3>
+        <p class="edu-inst">DAV International School</p>
+        <div class="edu-score-wrap"><div class="edu-score">68.6%</div><div class="edu-score-lbl">Percentage</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec sec-dark">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="rv">
+        <div class="eyebrow d-eyebrow">Contact</div>
+        <h2 class="sec-title d-title">Let's Connect</h2>
+        <p class="contact-intro">I am actively seeking Data Analyst opportunities. Whether you have a role, a project or just want to connect — I would be glad to hear from you.</p>
+        <div class="c-links">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adhishbiju2000@gmail.com" target="_blank" class="c-link"><div class="c-icon"><i class="fas fa-envelope"></i></div>adhishbiju2000@gmail.com</a>
+          <a href="https://www.linkedin.com/in/adhishbiju/" target="_blank" class="c-link"><div class="c-icon"><i class="fab fa-linkedin-in"></i></div>linkedin.com/in/adhishbiju</a>
+          <a href="https://github.com/adhishbiju2000" target="_blank" class="c-link"><div class="c-icon"><i class="fab fa-github"></i></div>github.com/adhishbiju2000</a>
         </div>
-    </section>
-    </main>
-  <!-- Footer (Fixed Version) -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                <div class="text-center md:text-left">
-                    <h3 class="text-xl font-bold text-white mb-2">Adhish Biju</h3>
-                    <p class="text-gray-300">© 2025 Adhish Biju. All rights reserved.</p>
-                </div>
-                <div class="flex justify-center md:justify-end space-x-6">
-                    <a href="#home" class="hover:text-blue-400 transition-colors">Home</a>
-                    <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
-                    <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-                </div>
-            </div>
+      </div>
+      <div class="rv d2">
+        <div class="c-form">
+          <div class="form-row">
+            <div class="fg"><label class="fl">Name</label><input type="text" class="fi" placeholder="Your name" id="cn"></div>
+            <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="your@email.com" id="ce"></div>
+          </div>
+          <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" placeholder="e.g. Data Analyst Opportunity" id="cs"></div>
+          <div class="fg"><label class="fl">Message</label><textarea class="ft" placeholder="Tell me about the role or project..." id="cm"></textarea></div>
+          <button class="f-submit" id="fsub"><i class="fas fa-paper-plane"></i> Send Message</button>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">Adhish Biju</div>
+    <div class="foot-copy">© 2025 Adhish Biju. All rights reserved.</div>
+    <div class="foot-links"><a href="#hero">Home</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+  </div>
+</footer>
 
-        // Close mobile menu when clicking on links
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+<script>
+// Mobile nav
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>mob.classList.toggle('open'));
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// Scroll reveal
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
+},{threshold:0.1,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+// Skill bars — trigger when about section enters view
+const bo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sk-bar').forEach(b=>{
+        b.style.transform=`scaleX(${b.dataset.w})`;
+        b.classList.add('on');
+      });
+      bo.unobserve(e.target);
+    }
+  });
+},{threshold:0.25});
+const ab=document.getElementById('about');
+if(ab)bo.observe(ab);
 
-        // Observe all sections for scroll animations
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(section);
-        });
-    </script>
+// Exp tabs
+document.querySelectorAll('.exp-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.exp-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.exp-pane').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const pane=document.getElementById(tab.dataset.t);
+    if(pane)pane.classList.add('active');
+  });
+});
+
+// Contact form
+document.getElementById('fsub').addEventListener('click',()=>{
+  const n=document.getElementById('cn').value.trim();
+  const e=document.getElementById('ce').value.trim();
+  const s=document.getElementById('cs').value.trim();
+  const m=document.getElementById('cm').value.trim();
+  if(!n||!e||!m){alert('Please fill in Name, Email and Message.');return;}
+  const sub=s||`Portfolio enquiry from ${n}`;
+  const body=`Name: ${n}\nEmail: ${e}\n\n${m}`;
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=adhishbiju2000@gmail.com&su=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`,'_blank');
+});
+</script>
 </body>
 </html>
-                    
